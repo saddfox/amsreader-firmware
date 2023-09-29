@@ -306,6 +306,8 @@
                         <option value={3}>8N1</option>
                         <option value={10}>7E1</option>
                         <option value={11}>8E1</option>
+                        <option value={18}>7O1</option>
+                        <option value={19}>8O1</option>
                     </select>
                     <input name="ms" type="number" bind:value={configuration.m.s} min={64} max={4096} step={64} class="in-l tr w-1/2">
                 </div>

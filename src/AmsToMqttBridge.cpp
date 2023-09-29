@@ -303,8 +303,14 @@ void setup() {
 			case 10:
 				serialConfig = SERIAL_7E1;
 				break;
-			default:
+			case 11:
 				serialConfig = SERIAL_8E1;
+				break;
+			case 18:
+				serialConfig = SERIAL_7O1;
+				break;
+			default:
+				serialConfig = SERIAL_8O1;
 				break;
 		}
 		#if defined(ESP32)
@@ -956,8 +962,14 @@ void setupHanPort(GpioConfig& gpioConfig, uint32_t baud, uint8_t parityOrdinal, 
 			case 10:
 				serialConfig = SERIAL_7E1;
 				break;
-			default:
+			case 11:
 				serialConfig = SERIAL_8E1;
+				break;
+			case 18:
+				serialConfig = SERIAL_7O1;
+				break;
+			default:
+				serialConfig = SERIAL_8O1;
 				break;
 		}
 		if(meterConfig.bufferSize < 4) meterConfig.bufferSize = 4; // 64 bytes (1) is default for software serial, 256 bytes (4) for hardware
@@ -1029,8 +1041,14 @@ void setupHanPort(GpioConfig& gpioConfig, uint32_t baud, uint8_t parityOrdinal, 
 			case 10:
 				serialConfig = SWSERIAL_7E1;
 				break;
-			default:
+			case 11:
 				serialConfig = SWSERIAL_8E1;
+				break;
+			case 18:
+				serialConfig = SWSERIAL_7O1;
+				break;
+			default:
+				serialConfig = SWSERIAL_8O1;
 				break;
 		}
 
@@ -2077,6 +2095,8 @@ void configFileParse() {
 			if(strncmp_P(buf+12, PSTR("8N1"), 3) == 0) meter.parity = 3;
 			if(strncmp_P(buf+12, PSTR("7E1"), 3) == 0) meter.parity = 10;
 			if(strncmp_P(buf+12, PSTR("8E1"), 3) == 0) meter.parity = 11;
+			if(strncmp_P(buf+12, PSTR("7O1"), 3) == 0) meter.parity = 18;
+			if(strncmp_P(buf+12, PSTR("8O1"), 3) == 0) meter.parity = 19;
 		} else if(strncmp_P(buf, PSTR("meterInvert "), 12) == 0) {
 			if(!lMeter) { config.getMeterConfig(meter); lMeter = true; };
 			meter.invert = String(buf+12).toInt() == 1;;
