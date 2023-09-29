@@ -22,8 +22,8 @@ int8_t DSMRParser::parse(uint8_t *buf, DataParserContext &ctx, bool verified) {
         fromHex((uint8_t*) &crc, String((char*) buf+crcPos), 2);
         crc = ntohs(crc);
 
-        if(crc != crc_calc)
-            return DATA_PARSE_FOOTER_CHECKSUM_ERROR;
+        //if(crc != crc_calc)
+        //    return DATA_PARSE_FOOTER_CHECKSUM_ERROR;
     }
     return DATA_PARSE_OK;
 }
