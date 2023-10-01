@@ -16,7 +16,7 @@ int8_t DSMRParser::parse(uint8_t *buf, DataParserContext &ctx, bool verified) {
     }
     if(!reachedEnd) return DATA_PARSE_INCOMPLETE;
     buf[ctx.length+1] = '\0';
-    if(crcPos > 0) {
+    if(crcPos > 0 && crcPos != ctx.length-2) {
 	    uint16_t crc_calc = crc16(buf, crcPos);
         uint16_t crc = 0x0000;
         fromHex((uint8_t*) &crc, String((char*) buf+crcPos), 2);
