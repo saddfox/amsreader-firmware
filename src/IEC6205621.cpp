@@ -19,7 +19,7 @@ IEC6205621::IEC6205621(const char* p, Timezone* tz) {
 	} else if(listId.startsWith(F("KMP"))) {
 		meterType = AmsTypeKamstrup;
 		listId = listId.substring(0,4);
-	} else if(listId.startsWith(F("ISk"))) {
+	} else if(listId.startsWith(F("ISk")) || listId.startsWith(F("ISK"))) {
 		meterType = AmsTypeIskra;
 		listId = listId.substring(0,5);
 	} else if(listId.startsWith(F("XMX"))) {
