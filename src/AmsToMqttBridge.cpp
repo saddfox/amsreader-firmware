@@ -378,8 +378,14 @@ void setup() {
 			case 10:
 				serialConfig = SERIAL_7E1;
 				break;
-			default:
+			case 11:
 				serialConfig = SERIAL_8E1;
+				break;
+			case 18:
+				serialConfig = SERIAL_7O1;
+				break;
+			default:
+				serialConfig = SERIAL_8O1;
 				break;
 		}
 		#if defined(ESP32)
@@ -1669,6 +1675,8 @@ void configFileParse() {
 			if(strncmp_P(buf+12, PSTR("8N2"), 3) == 0) meter.parity = 7;
 			if(strncmp_P(buf+12, PSTR("7E1"), 3) == 0) meter.parity = 10;
 			if(strncmp_P(buf+12, PSTR("8E1"), 3) == 0) meter.parity = 11;
+			if(strncmp_P(buf+12, PSTR("7O1"), 3) == 0) meter.parity = 18;
+			if(strncmp_P(buf+12, PSTR("8O1"), 3) == 0) meter.parity = 19;
 		} else if(strncmp_P(buf, PSTR("meterInvert "), 12) == 0) {
 			if(!lMeter) { config.getMeterConfig(meter); lMeter = true; };
 			meter.invert = String(buf+12).toInt() == 1;;

@@ -2287,6 +2287,12 @@ void AmsWebServer::configFileDownload() {
 			case 11:
 				strcpy_P(parity, PSTR("8E1"));
 				break;
+			case 18:
+				strcpy_P(parity, PSTR("7O1"));
+				break;
+			case 19:
+				strcpy_P(parity, PSTR("8O1"));
+				break;
 		}
 		if(strlen(parity) > 0) server.sendContent(buf, snprintf_P(buf, BufferSize, PSTR("meterParity %s\n"), parity));
 		server.sendContent(buf, snprintf_P(buf, BufferSize, PSTR("meterInvert %d\n"), meter.invert ? 1 : 0));

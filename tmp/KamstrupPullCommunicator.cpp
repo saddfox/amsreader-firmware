@@ -135,8 +135,14 @@ void KamstrupPullCommunicator::setupHanPort(uint32_t baud, uint8_t parityOrdinal
 			case 10:
 				serialConfig = SERIAL_7E1;
 				break;
-			default:
+			case 11:
 				serialConfig = SERIAL_8E1;
+				break;
+			case 18:
+				serialConfig = SERIAL_7O1;
+				break;
+			default:
+				serialConfig = SERIAL_8O1;
 				break;
 		}
 		if(meterConfig.bufferSize < 4) meterConfig.bufferSize = 4; // 64 bytes (1) is default for software serial, 256 bytes (4) for hardware
@@ -205,8 +211,14 @@ void KamstrupPullCommunicator::setupHanPort(uint32_t baud, uint8_t parityOrdinal
 			case 10:
 				serialConfig = SWSERIAL_7E1;
 				break;
-			default:
+			case 11:
 				serialConfig = SWSERIAL_8E1;
+				break;
+			case 18:
+				serialConfig = SWSERIAL_7O1;
+				break;
+			default:
+				serialConfig = SWSERIAL_8O1;
 				break;
 		}
 

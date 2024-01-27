@@ -382,7 +382,9 @@
                             <option value={7}>8N2</option>
                             <option value={10}>7E1</option>
                             <option value={11}>8E1</option>
-                        </select>
+                            <option value={18}>7O1</option>
+                            <option value={19}>8O1</option>
+                    </select>
                         <input name="ms" type="number" bind:value={configuration.m.s} min={64} max={sysinfo.chip == 'esp8266' ? configuration.i.h.p == 3 || configuration.i.h.p == 113 ? 512 : 256 : 4096} step={64} class="in-l tr w-1/2">
                     </div>
                 </div>
