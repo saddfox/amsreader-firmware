@@ -60,11 +60,14 @@ IEC6205621::IEC6205621(const char* p, Timezone* tz, MeterConfig* meterConfig) {
 	}
 
 	String timestamp = extract(payload, F("1.0.0"));
+	if(timestamp.isEmpty()) {
+		timestamp = extract(payload, F("0.9.2")) + extract(payload, F("0.9.1"));
+	}
 	if(timestamp.length() > 10) {
 		tmElements_t tm;
 		tm.Year = (timestamp.substring(0,2).toInt() + 2000) - 1970;
-		tm.Month = timestamp.substring(4,6).toInt();
-		tm.Day = timestamp.substring(2,4).toInt();
+		tm.Month = timestamp.substring(2,4).toInt();
+		tm.Day = timestamp.substring(4,6).toInt();
 		tm.Hour = timestamp.substring(6,8).toInt();
 		tm.Minute = timestamp.substring(8,10).toInt();
 		tm.Second = timestamp.substring(10,12).toInt();
